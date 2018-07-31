@@ -1,1 +1,62 @@
 
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Crystal Collector</title>
+        
+        <link rel="icon" type="image/png" href="assets/images/favicon.png">
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter|The+Girl+Next+Door">
+        <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Simple crystal game</h1>
+
+            <!-- Page 0: Directions -->
+            <div class="page">
+                <h2>Directions:</h2>
+                
+                <p>There are 4 crystals, each worth a certain amount of points.</p>
+                <p>Find out the value of each crystal to hit the target sum!</p>
+                <p>Note: Game is similar to blackjack.</p>
+
+                <div class="page_next">Start</div>
+            </div>
+            
+            <!-- Page 1: Game Screen -->
+            <div class="page">
+                <div id="userStats">
+                    <p>Wins: <strong><span id="numWins"></span></strong></p>
+                    <p>Losses: <strong><span id="numLosses"></span></strong></p>
+                </div>
+
+                <p>Make a sum of <span id="targetSum"></span>!</p>
+                <p>Your sum is <strong><span id="currentSum"></span></strong>.</p>
+                
+                <div class="clearfix">
+                    <img class="crystals" src="assets/images/blue.png" alt="blue crystal">
+                    <img class="crystals" src="assets/images/white_blue.png" alt="white_blue crystal">
+                    <img class="crystals" src="assets/images/white_purple.png" alt="white_purple crystal">
+                    <img class="crystals" src="assets/images/purple.png" alt="purple crystal">
+                </div>
+
+                <div class="page_prev">Directions</div>
+            </div>
+        </div>
+
+        <!-- Lightbox -->
+        <div id="lightBox_background"></div>
+
+        <div id="lightBox" class="container">
+            <p id="outputMessage"></p>
+        </div>
+
+        <script type="text/javascript" src="assets/javascript/game.js"></script>
+    </body>
+</html>
