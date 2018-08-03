@@ -1,7 +1,7 @@
 
 
     
-/* Crystal Collector Game */
+// Crystal Collector Game  //
 const CrystalCollector = function() {
 
     // Variables for the game
@@ -13,14 +13,14 @@ const CrystalCollector = function() {
     
     // Variables for the user
     let numWins = 0, numLosses = 0;
-    let targetSum, currentSum;
+    let targetSum, TotalSum;
 
 
     /*  Start a new game */
     this.startNewGame = function() {
         // Reset variables
         targetSum  = 0;
-        currentSum = 0;
+        TotalSum = 0;
 
         // Assign a value between 1 and 12 to each crystal
         for (let i = 0; i < numCrystals; i++) {
@@ -44,11 +44,11 @@ const CrystalCollector = function() {
         displayNumWins();
         displayNumLosses();
         displayTargetSum();
-        displayCurrentSum();
+        displayTotalSum();
     }
 
     
-    /* Display functions */ 
+    // Display functions 
     function displayCurrentPage() {
         $(".page").css({"display": "none"});
         $(`.page:nth-of-type(${currentPage + 1})`).css({"display": "block"});
@@ -70,12 +70,12 @@ const CrystalCollector = function() {
         $("#targetSum").text(targetSum);
     }
 
-    function displayCurrentSum() {
-        $("#currentSum").text(currentSum);
+    function displayTotalSum() {
+        $("#TotalSum").text(TotalSum);
     }
 
 
-    /* Set (update) functions */
+    // Set (update) functions 
     this.updatePage = function(changeBy) {
         currentPage = (currentPage + changeBy + numPages) % numPages;
 
@@ -97,15 +97,15 @@ const CrystalCollector = function() {
     }
     
     this.collectCrystal = function(index) {
-        // Update the current sum
-        currentSum += crystalValues[index];
+        // Update the total sum
+        TotalSum += crystalValues[index];
 
-        displayCurrentSum();
+        displayTotalSum();
 
-        if (currentSum < targetSum) {
+        if (TotalSum < targetSum) {
             return;
 
-        } else if (currentSum === targetSum) {
+        } else if (TotalSum === targetSum) {
             updateNumWins(1);
 
             $("#outputMessage").html("Congratulations!<br>Click anywhere to continue.");
@@ -137,13 +137,7 @@ const CrystalCollector = function() {
 
 
 
-/****************************************************************************
- ****************************************************************************
-    
-    Start a new game when the page loads
-    
-*****************************************************************************
-*****************************************************************************/
+// Start a new game when the page loads 
 let game;
 
 $(document).ready(function() {
@@ -152,11 +146,8 @@ $(document).ready(function() {
     game.startNewGame();
 
     
-    /************************************************************************
-        
-        Respond to user's actions
-        
-    *************************************************************************/
+    // Respond to user's actions
+
     // Page selection
     $(".page_prev").on("click", function() {
         game.updatePage(-1);
