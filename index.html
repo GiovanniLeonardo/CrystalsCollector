@@ -7,28 +7,16 @@
 
         <title>Crystal Collector Game</title>
         
-        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
         <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Architects+Daughter|The+Girl+Next+Door">
+        <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
         <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-        
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="container">
             <h1>Crystal Collector</h1>
 
-            <!-- Page 0: Directions -->
-            <div class="page">
-                <h2>Directions:</h2>
-                
-                <p>There are 4 crystals, each worth a certain amount of points.</p>
-                <p>Find out the value of each crystal to hit the target sum!</p>
-                <p>Note: Game is similar to blackjack.</p>
-
-                <div class="page_next">Start</div>
-            </div>
-            
-            <!-- Page 1: Game Screen -->
+            <!-- Game Screen -->
             <div class="page">
                 <div id="userStats">
                     <p>Wins: <strong><span id="numWins"></span></strong></p>
@@ -39,20 +27,24 @@
                 <p>Your total score is <strong><span id="TotalSum"></span></strong>.</p>
                 
                 <div class="clearfix">
-                    <img class="crystals" src="assets/images/blue.png" alt="blue crystal">
-                    <img class="crystals" src="assets/images/white_blue.png" alt="white_blue crystal">
-                    <img class="crystals" src="assets/images/white_purple.png" alt="white_purple crystal">
-                    <img class="crystals" src="assets/images/purple.png" alt="purple crystal">
+                    <img class="crystals" src="assets/images/blue.png">
+                    <img class="crystals" src="assets/images/white_blue.png">
+                    <img class="crystals" src="assets/images/white_purple.png">
+                    <img class="crystals" src="assets/images/purple.png">
                 </div>
 
-                <div class="page_prev">Directions</div>
+                <h2>Directions:</h2>
+                
+                <p>There are 4 crystals, each worth a certain amount of points.</p>
+                <p>Click on each crystal to find out the value and the target sum!</p>
+                <p>Note: Game is similar to blackjack.</p>
             </div>
+
+
         </div>
 
-        <!-- Lightbox -->
-        <div id="lightBox_background"></div>
-
-        <div id="lightBox" class="container">
+        <!-- Score box -->
+        <div id="scoreBox" class="container">
             <p id="outputMessage"></p>
         </div>
 

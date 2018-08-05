@@ -5,9 +5,8 @@
 const CrystalCollector = function() {
 
     // Variables for the game
-    const numPages      = $(".page").length;
-    let   currentPage   = 0;
     
+    let   currentPage   = 0;  
     const numCrystals   = 4;
     let   crystalValues = new Array(numCrystals);
     
@@ -54,8 +53,8 @@ const CrystalCollector = function() {
         $(`.page:nth-of-type(${currentPage + 1})`).css({"display": "block"});
     }
 
-    this.displayLightBox = function(lightBoxOn) {
-        $("#lightBox_background, #lightBox").css({"display": (lightBoxOn ? "block" : "none")});
+    this.displayScoreBox = function(scoreBoxOn) {
+        $("#scoreBox_background, #scoreBox").css({"display": (scoreBoxOn ? "block" : "none")});
     }
 
     function displayNumWins() {
@@ -107,30 +106,29 @@ const CrystalCollector = function() {
 
         } else if (TotalSum === targetSum) {
             updateNumWins(1);
-
-            $("#outputMessage").html("Congratulations!<br>Click anywhere to continue.");
-            $("#lightBox").css({
-                "animation-name"  : "slide_down",
-                "background-color": "var(--color-dark-gray)"
+            
+            $("#outputMessage").html("Congratulations! You Won!<br>Click anywhere to continue.");
+            $("#scoreBox").css({
+                
             });
 
-            this.displayLightBox(true);
+            this.displayScoreBox(true);
             
-            this.startNewGame();
+            this.startNewGame(1);
+      
 
         } else {
             updateNumLosses(1);
 
             $("#outputMessage").html("You lose!<br>Click anywhere to continue.");
-            $("#lightBox").css({
-                "animation-name"  : "shake",
-                "background-color": "var(--color-danger-red)"
+            $("#scoreBox").css({
+
             });
 
-            this.displayLightBox(true);
+            this.displayScoreBox(true);
             
             this.startNewGame();
-
+            
         }
     }
 }
@@ -145,25 +143,13 @@ $(document).ready(function() {
 
     game.startNewGame();
 
-    
-    // Respond to user's actions
-
-    // Page selection
-    $(".page_prev").on("click", function() {
-        game.updatePage(-1);
-    });
-
-    $(".page_next").on("click", function() {
-        game.updatePage(1);
-    });
-
     // Game mechanics
     $(".crystals").on("click", function() {
         game.collectCrystal($(".crystals").index(this));
     });
 
-    // Lightbox
-    $("#lightBox_background, #lightBox").on("click", function() {
-        game.displayLightBox(false);
+    // Scorebox
+    $("#scoreBox_background, #scoreBox").on("click", function() {
+        game.displayScoreBox(false);
     });
 });
